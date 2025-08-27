@@ -1,1 +1,1 @@
-# coffee-shop
+# Coffee Shop
