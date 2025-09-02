@@ -7,7 +7,11 @@ import java.util.Map;
 
 @Service
 public class ProductService {
+    Double NO_VALUE = 0.00;
+
     public Double applyPriceForBasket(Map<ProductEnum, Integer> products) {
+        if (products == null) return NO_VALUE;
+
         var priceCoffees = coffeeBulkPurchase(products);
         var priceStrawberries = strawberryBulkPurchase(products);
         var priceGreenTeas = greenTeaBuyOneGetOne(products);
@@ -18,7 +22,7 @@ public class ProductService {
     Double greenTeaBuyOneGetOne(Map<ProductEnum, Integer> products) {
         var greenTeas = products.get(ProductEnum.GREEN_TEA);
 
-        if (greenTeas == null) return 0.0;
+        if (greenTeas == null || greenTeas < 0) return NO_VALUE;
 
         if (greenTeas % 2 == 0) {
             return ProductEnum.GREEN_TEA.getPrice() * greenTeas/2;
@@ -32,7 +36,7 @@ public class ProductService {
     Double strawberryBulkPurchase(Map<ProductEnum, Integer> products) {
         var strawberries = products.get(ProductEnum.STRAWBERRY);
 
-        if (strawberries == null) return 0.0;
+        if (strawberries == null || strawberries < 0) return NO_VALUE;
 
         if (strawberries >= 3) {
             var promotionPrice = 4.5;
@@ -45,7 +49,7 @@ public class ProductService {
     Double coffeeBulkPurchase(Map<ProductEnum, Integer> products) {
         var coffees = products.get(ProductEnum.COFFEE);
 
-        if (coffees == null) return 0.0;
+        if (coffees == null || coffees < 0) return NO_VALUE;
 
         if (coffees >= 3) {
             var result = (ProductEnum.COFFEE.getPrice() * coffees) * 2/3;

@@ -24,6 +24,15 @@ public class ProductServiceTest {
     }
 
     @Test
+    void applyPriceForBasket_NullBasket_ShouldReturnZero() {
+        // When
+        var result = productService.applyPriceForBasket(null);
+
+        // Then
+        assertEquals(0.0, result, 0.001);
+    }
+
+    @Test
     void applyPriceForBasket_MixedDiscountedItems_ShouldCalculateCorrectTotal() {
         // Given
         Map<ProductEnum, Integer> products = Map.of(
@@ -40,19 +49,35 @@ public class ProductServiceTest {
     }
 
     @Test
-    void applyPriceForBasket_MixedItems_ShouldCalculateCorrectTotal() {
+    void applyPriceForBasket_MaximumItems_ShouldCalculateCorrectTotal() {
         // Given
         Map<ProductEnum, Integer> products = Map.of(
-                ProductEnum.COFFEE, 2,
-                ProductEnum.STRAWBERRY, 2,
-                ProductEnum.GREEN_TEA, 3
+                ProductEnum.COFFEE, Integer.MAX_VALUE,
+                ProductEnum.STRAWBERRY, Integer.MAX_VALUE,
+                ProductEnum.GREEN_TEA, Integer.MAX_VALUE
         );
 
         // When
         var result = productService.applyPriceForBasket(products);
 
         // Then
-        assertEquals(38.68, result, 0.001);
+        assertEquals(2.908050772135E10, result, 0.001);
+    }
+
+    @Test
+    void applyPriceForBasket_NegativeItems_ShouldCalculateCorrectTotal() {
+        // Given
+        Map<ProductEnum, Integer> products = Map.of(
+                ProductEnum.COFFEE, -10,
+                ProductEnum.STRAWBERRY, -1,
+                ProductEnum.GREEN_TEA, Integer.MIN_VALUE
+        );
+
+        // When
+        var result = productService.applyPriceForBasket(products);
+
+        // Then
+        assertEquals(0.00, result, 0.001);
     }
 
     @Test
