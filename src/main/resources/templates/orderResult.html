@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order Result</title>
+</head>
+<body>
+<h2>Your Order:</h2>
+<ul>
+    <li th:text="'Coffee: ' + ${coffeeCount}"></li>
+    <li th:text="'Green Tea: ' + ${greenTeaCount}"></li>
+    <li th:text="'Strawberry: ' + ${strawberryCount}"></li>
+</ul>
+<h3 th:text="'Total: $' + ${total}"></h3>
+<a href="/">Order again</a>
+</body>
+</html>

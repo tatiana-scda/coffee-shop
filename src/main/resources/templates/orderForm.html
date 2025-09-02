@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Coffee Order</title>
+</head>
+<body>
+<h1>Hi! Welcome :D Can I get your order?</h1>
+
+<form action="/order" method="post">
+    <label for="coffeeCount">How many coffees do you want?</label>
+    <input type="number" id="coffeeCount" name="coffeeCount"
+           min="0" step="1" pattern="\d+" required>
+    <br><br>
+
+    <label for="greenTeaCount">How many green teas do you want?</label>
+    <input type="number" id="greenTeaCount" name="greenTeaCount"
+           min="0" step="1" pattern="\d+" required>
+    <br><br>
+
+    <label for="strawberryCount">How many strawberries do you want?</label>
+    <input type="number" id="strawberryCount" name="strawberryCount"
+           min="0" step="1" pattern="\d+" required>
+    <br><br>
+
+    <button type="submit">Order</button>
+</form>
+</body>
+</html>

@@ -1,8 +1,26 @@
 package com.scda.coffee_shop.domain.model;
 
-import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
-@AllArgsConstructor
+@Getter
+@EqualsAndHashCode
 public class ProductCode {
-    String code;
+
+    private final String value;
+
+    public ProductCode(String value) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException("Product code cannot be null or blank");
+        }
+        if (!value.matches("[A-Z]{2}\\d")) {
+            throw new IllegalArgumentException("Invalid product code format: " + value);
+        }
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

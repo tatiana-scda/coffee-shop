@@ -1,5 +1,8 @@
 package com.scda.coffee_shop.domain.model;
 
+import lombok.Getter;
+
+@Getter
 public enum ProductEnum {
     GREEN_TEA("GR1", 3.11),
     STRAWBERRY("SR1", 5.00),
@@ -11,13 +14,5 @@ public enum ProductEnum {
     ProductEnum(String codeString, Double price) {
         this.code = new ProductCode(codeString);
         this.price = price;
-    }
-
-    public ProductCode getCode() {
-        return code;
-    }
-
-    public Double getPrice() {
-        return price;
     }
 }
