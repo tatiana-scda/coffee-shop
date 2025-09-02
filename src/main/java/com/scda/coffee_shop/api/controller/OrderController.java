@@ -41,10 +41,6 @@ public class OrderController {
         model.addAttribute("greenTeaCount", greenTeaCount);
         model.addAttribute("strawberryCount", strawberryCount);
 
-        model.addAttribute("coffeePrice", ProductEnum.COFFEE.getPrice());
-        model.addAttribute("greenTeaPrice", ProductEnum.GREEN_TEA.getPrice());
-        model.addAttribute("strawberryPrice", ProductEnum.STRAWBERRY.getPrice());
-
         model.addAttribute("total", total);
 
         return "orderResult";

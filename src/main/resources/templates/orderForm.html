@@ -17,18 +17,21 @@
 
 <form action="/order" method="post">
     <fieldset>
-        <legend>🥤 Drinks</legend>
+        <legend> 📝 Menu</legend>
 
         <label for="coffeeCount">☕ Coffee:</label>
-        <input type="number" id="coffeeCount" name="coffeeCount" min="0" step="1" pattern="\d+" required>
+        <input type="number" id="coffeeCount" name="coffeeCount"
+               min="0" max="2147483647" value="0" step="1" required>
         <br><br>
 
         <label for="greenTeaCount">🍵 Green Tea:</label>
-        <input type="number" id="greenTeaCount" name="greenTeaCount" min="0" step="1" pattern="\d+" required>
+        <input type="number" id="greenTeaCount" name="greenTeaCount"
+               min="0" max="2147483647" value="0" step="1" required>
         <br><br>
 
         <label for="strawberryCount">🍓 Strawberry:</label>
-        <input type="number" id="strawberryCount" name="strawberryCount" min="0" step="1" pattern="\d+" required>
+        <input type="number" id="strawberryCount" name="strawberryCount"
+               min="0" max="2147483647" value="0" step="1" required>
     </fieldset>
 
     <br>
