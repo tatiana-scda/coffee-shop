@@ -24,10 +24,10 @@ public class ProductServiceTest {
     }
 
     @Test
-    void applyPriceForBasket_MixedItems_ShouldCalculateCorrectTotal() {
+    void applyPriceForBasket_MixedDiscountedItems_ShouldCalculateCorrectTotal() {
         // Given
         Map<ProductEnum, Integer> products = Map.of(
-                ProductEnum.COFFEE, 4,
+                ProductEnum.COFFEE, 3,
                 ProductEnum.STRAWBERRY, 3,
                 ProductEnum.GREEN_TEA, 2
         );
@@ -36,7 +36,23 @@ public class ProductServiceTest {
         var result = productService.applyPriceForBasket(products);
 
         // Then
-        assertEquals(46.56, result, 0.01);
+        assertEquals(39.07, result, 0.001);
+    }
+
+    @Test
+    void applyPriceForBasket_MixedItems_ShouldCalculateCorrectTotal() {
+        // Given
+        Map<ProductEnum, Integer> products = Map.of(
+                ProductEnum.COFFEE, 2,
+                ProductEnum.STRAWBERRY, 2,
+                ProductEnum.GREEN_TEA, 3
+        );
+
+        // When
+        var result = productService.applyPriceForBasket(products);
+
+        // Then
+        assertEquals(38.68, result, 0.001);
     }
 
     @Test
@@ -89,6 +105,30 @@ public class ProductServiceTest {
 
         // Then
         assertEquals(22.46, result, 0.001);
+    }
+
+    @Test
+    void coffee_IfHasZeroItems_ShouldReturnZero() {
+        // Given
+        Map<ProductEnum, Integer> map = Map.of(ProductEnum.COFFEE, 0);
+
+        // When
+        var result = productService.coffeeBulkPurchase(map);
+
+        // Then
+        assertEquals(0, result, 0.001);
+    }
+
+    @Test
+    void coffee_IfHasNullItems_ShouldReturnZero() {
+        // Given
+        Map<ProductEnum, Integer> map = Map.of();
+
+        // When
+        var result = productService.coffeeBulkPurchase(map);
+
+        // Then
+        assertEquals(0, result, 0.001);
     }
 
     @Test
