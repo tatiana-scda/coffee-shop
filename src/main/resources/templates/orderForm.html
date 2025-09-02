@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Coffee Order</title>
+    <!-- Load Poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 <body>
-<h1>Hi! Welcome :D Can I get your order?</h1>
+<h1>☕ Hi! Welcome 😊</h1>
+<p>Can I get your order?</p>
 
 <form action="/order" method="post">
-    <label for="coffeeCount">How many coffees do you want?</label>
-    <input type="number" id="coffeeCount" name="coffeeCount"
-           min="0" step="1" pattern="\d+" required>
-    <br><br>
+    <fieldset>
+        <legend>🥤 Drinks</legend>
 
-    <label for="greenTeaCount">How many green teas do you want?</label>
-    <input type="number" id="greenTeaCount" name="greenTeaCount"
-           min="0" step="1" pattern="\d+" required>
-    <br><br>
+        <label for="coffeeCount">☕ Coffee:</label>
+        <input type="number" id="coffeeCount" name="coffeeCount" min="0" step="1" pattern="\d+" required>
+        <br><br>
 
-    <label for="strawberryCount">How many strawberries do you want?</label>
-    <input type="number" id="strawberryCount" name="strawberryCount"
-           min="0" step="1" pattern="\d+" required>
-    <br><br>
+        <label for="greenTeaCount">🍵 Green Tea:</label>
+        <input type="number" id="greenTeaCount" name="greenTeaCount" min="0" step="1" pattern="\d+" required>
+        <br><br>
 
-    <button type="submit">Order</button>
+        <label for="strawberryCount">🍓 Strawberry:</label>
+        <input type="number" id="strawberryCount" name="strawberryCount" min="0" step="1" pattern="\d+" required>
+    </fieldset>
+
+    <br>
+    <button type="submit">🛒 Order</button>
 </form>
 </body>
 </html>
